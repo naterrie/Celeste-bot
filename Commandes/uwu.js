@@ -7,17 +7,8 @@ module.exports = {
     description: "Répond uwu",
     permissions: "Aucune",
     dm: false,
-    options: [
-        {
-            type: "user",
-            name: "membre",
-            description: "user to kiss",
-            required: true
-        }
-    ],
 
-    
     async run(bot, message) {
-        await message.reply(`kissed`) 
+        await message.reply(`https://cdn.discordapp.com/attachments/840389339984822307/1073399517648527470/uwu.jpg`) 
     }
 }
