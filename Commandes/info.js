@@ -7,7 +7,7 @@ module.exports = {
     permissions: "Aucune",
     dm: true,
 
-    async run(bot, message) {
-        await message.reply(`Bonjour je suis ${client.user.username} \nJe suis un bot développé par ${bot.users.cache.get(bot.ownerID)}`) 
+    async run(bot, interaction) {
+        await interaction.reply({ content: `Bonjour je suis ${client.user.username} \nJe suis un bot développé par ${bot.users.cache.get(bot.ownerID)}`, ephemeral: false}) 
     }
 }

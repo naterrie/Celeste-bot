@@ -8,7 +8,7 @@ module.exports = {
     permissions: Discord.PermissionFlagsBits.AttachFiles,
     dm: false,
 
-    async run(bot, message) {
-        await message.reply(`https://cdn.discordapp.com/attachments/840389339984822307/1073399517648527470/uwu.jpg`) 
+    async run(bot, interaction) {
+        await interaction.reply({content: `https://cdn.discordapp.com/attachments/840389339984822307/1073399517648527470/uwu.jpg`, ehemeral: false}) 
     }
 }

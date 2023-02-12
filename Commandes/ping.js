@@ -7,7 +7,7 @@ module.exports = {
     permissions: "Aucune",
     dm: true,
 
-    async run(bot, message) {
-        await message.reply(`Pong : ${bot.ws.ping} :ping_pong: `) 
+    async run(bot, interaction) {
+        await interaction.reply({ content: `Pong : ${bot.ws.ping} :ping_pong: `, ephemeral: true }); 
     }
 }
