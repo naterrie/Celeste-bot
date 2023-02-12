@@ -8,6 +8,6 @@ module.exports = {
     dm: true,
 
     async run(bot, interaction) {
-        await interaction.reply({ content: `Pong : ${bot.ws.ping} :ping_pong: `, ephemeral: true }); 
+        await interaction.reply({ content: `Pong : ${bot.ws.ping} :ping_pong: `, ephemeral: false }); 
     }
 }

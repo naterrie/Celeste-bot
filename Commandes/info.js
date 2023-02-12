@@ -1,4 +1,4 @@
-const Discord = require("discord.js")
+const { EmbedBuilder } = require('discord.js')
 
 module.exports = {
 
@@ -8,6 +8,13 @@ module.exports = {
     dm: true,
 
     async run(bot, interaction) {
-        await interaction.reply({ content: `Bonjour je suis ${client.user.username} \nJe suis un bot développé par ${bot.users.cache.get(bot.ownerID)}`, ephemeral: false}) 
+
+        const embed = new EmbedBuilder()
+			.setColor(0xCA335c)
+            .setTitle(`titre`)
+            .setDescription(`<@${bot.user.id}>`)
+            .setThumbnail(bot.user.displayAvatarURL())
+
+            await interaction.reply({embeds: [embed]})
     }
 }
