@@ -5,7 +5,7 @@ module.exports = {
     name: "uwu",
     name: "uwu",
     description: "Répond uwu",
-    permissions: "Aucune",
+    permissions: Discord.PermissionFlagsBits.AttachFiles,
     dm: false,
 
     async run(bot, message) {

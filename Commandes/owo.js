@@ -8,7 +8,7 @@ module.exports = {
     permissions: "Aucune",
     dm: false,
 
-    async run(bot, message) {
-        await message.reply(`OwO`) 
+    async run(bot, interaction) {
+        await interaction.reply({ content: `OwO`, ephemeral: true }); 
     }
 }
