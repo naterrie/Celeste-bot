@@ -1,4 +1,4 @@
-const Discord = require("discord.js")
+const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
 
@@ -23,7 +23,13 @@ module.exports = {
         if(interaction.member.user.id == user.id) return interaction.reply({ content : "Tu ne peux pas t'embrasser toi même", ephemeral : true })
         if(user.id == bot.user.id) return interaction.reply({ content : "Désolé.e, tu ne peux pas embrasser des lignes de code :/", ephemeral : true })
 
-        await interaction.reply({ content : `<@${interaction.member.user.id}> à embrassé.e : <@${user.id}>`, ephemeral : false }) 
+            const embed = new EmbedBuilder()
+			.setColor(0xCA335c)
+			.setTitle('Gif kiss')
+			.setURL('https://tenor.com/view/cat-kiss-gif-25376137')
+			.setDescription(`<@${interaction.member.user.id}> à embrassé.e : <@${user.id}>`)
+
+        await interaction.reply({embeds: [embed], ephemeral : false }) 
 
     }
 }

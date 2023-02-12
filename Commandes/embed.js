@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require('discord.js');
+const { EmbedBuilder } = require('discord.js')
 
 module.exports = {
 
@@ -13,7 +13,7 @@ module.exports = {
 			.setColor(0xCA335c)
 			.setTitle('Embed test')
 			.setURL('https://discord.js.org')
-			.setDescription('Some description here')
+			.setDescription('I\'m testing the embed')
 
         await interaction.reply({ embeds: [embed]})
     }
