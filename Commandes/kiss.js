@@ -17,11 +17,9 @@ module.exports = {
     
     async run(bot, interaction, args) {
     
-
         let user = interaction.options.getUser("membre")
-
         if(interaction.member.user.id == user.id) return interaction.reply({ content : "Tu ne peux pas t'embrasser toi même", ephemeral : true })
-        if(user.id == bot.user.id) return interaction.reply({ content : "Désolé.e, tu ne peux pas embrasser des lignes de code :/", ephemeral : true })
+        if(user.bot === true) return interaction.reply({ content : "Désolé.e, tu ne peux pas embrasser des robots :/", ephemeral : true })
 
         const file = new AttachmentBuilder('./other/kiss.gif')
 

@@ -10,11 +10,11 @@ module.exports = async (bot, message) => {
 
     if(!message.content.startsWith(prefix)) return;
 
-    try {
+    /*try {
     let command = require(`../Commandes/${commandName}`)
         command.run(bot, message, args)
     } catch (err) {
         message.reply("La commande n'existe pas !")
-    }
+    }*/
 
 }
