@@ -25,9 +25,8 @@ module.exports = {
 
             const embed = new EmbedBuilder()
 			.setColor(0xCA335c)
-			.setTitle('Gif kiss')
-			.setURL('https://tenor.com/view/cat-kiss-gif-25376137')
-			.setDescription(`<@${interaction.member.user.id}> à embrassé.e : <@${user.id}>`)
+			.setImage("https://cdn.discordapp.com/attachments/1000078993854320682/1074268601365831690/kiss.gif")
+            .setDescription(`<@${interaction.member.user.id}> à embrassé.e : <@${user.id}>`)
 
         await interaction.reply({embeds: [embed], ephemeral : false }) 
 
