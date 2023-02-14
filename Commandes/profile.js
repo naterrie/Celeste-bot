@@ -6,6 +6,7 @@ module.exports = {
     description: "in dev",
     permissions: "Aucune",
     dm: true,
+    category: "Usefull",
 
     async run(bot, interaction) {
 

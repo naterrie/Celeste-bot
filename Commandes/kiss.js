@@ -6,6 +6,7 @@ module.exports = {
     description: "kiss someone",
     permissions: "Aucune",
     dm: false,
+    category: "Fun",
     options: [
         {
             type: "user",
