@@ -21,6 +21,5 @@ module.exports = {
 			);
 
         await interaction.reply({ content: `Button :`, components: [row]}) 
-                        // Des embeds, ephemeral ou autres peuvent être ajoutées ici
     }
 }
