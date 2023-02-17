@@ -27,7 +27,7 @@ module.exports = {
         const embed = new EmbedBuilder()
 			.setColor(0xCA335c)
             .setImage('attachment://kiss.gif')
-            .setDescription(`<@${interaction.member.user.id}> à embrassé.e : <@${user.id}>`)
+            .setDescription(`${interaction.user.id} à embrassé.e : <@${user.id}>`)
 
         await interaction.reply({embeds: [embed], files: [file] }) 
 

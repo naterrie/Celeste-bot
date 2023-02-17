@@ -16,5 +16,4 @@ module.exports = async (bot, message) => {
     } catch (err) {
         message.reply("La commande n'existe pas !")
     }*/
-
 }

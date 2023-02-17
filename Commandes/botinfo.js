@@ -2,7 +2,7 @@ const { EmbedBuilder } = require('discord.js')
 
 module.exports = {
 
-    name: "info",
+    name: "botinfo",
     description: "in dev",
     permissions: "Aucune",
     dm: true,
@@ -21,7 +21,6 @@ module.exports = {
                 { name: "Creation date", value: `${bot.user.createdAt}`, inline: true },
             )
             .setTimestamp()
-
             await interaction.reply({embeds: [embed]})
     }
 }

@@ -5,17 +5,27 @@ module.exports = {
     name: "profile",
     description: "in dev",
     permissions: "Aucune",
-    dm: true,
+    dm: false, // to add in dm
     category: "Usefull",
 
     async run(bot, interaction) {
 
+        if(interaction.member.nickname === null) {
+            interaction.member.nickname = "Aucun";
+        }
         const embed = new EmbedBuilder()
 			.setColor(0xCA335c)
             .setTitle(`What about you ?`)
-            .setDescription(`<@${interaction.user.id}>`)
+            .addFields(
+                { name: "Nickname", value : `${interaction.user.username}`, inline: true },
+                { name: "Tag", value : `#${interaction.user.discriminator}`, inline: true },
+                { name: "Nickname", value : `${interaction.member.nickname}`, inline: true },
+            )
             .setThumbnail(interaction.user.displayAvatarURL())
-
-            await interaction.reply({embeds: [embed]})
+            .setTimestamp(interaction.member.joinedTimestamp)
+            .setFooter({text : "You've join the server the"})
+            
+            console.log(interaction.member)
+            await interaction.reply({content : `${interaction.user.banner}`, embeds: [embed]},)
     }
 }

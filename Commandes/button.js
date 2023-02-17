@@ -5,7 +5,7 @@ module.exports = {
     name: "button",
     description: "test button",
     permissions: "Aucune",
-    dm: false,
+    dm: true,
 
     async run(bot, interaction) {
 
@@ -19,7 +19,6 @@ module.exports = {
 					.setStyle(ButtonStyle.Primary)
                     .setDisabled(false),
 			);
-
-        await interaction.reply({ content: `Button :`, components: [row]}) 
+        await interaction.reply({ content: `Button :`, components: [row]})
     }
 }

@@ -5,10 +5,11 @@ module.exports = {
     name: "owo",
     description: "Répond owo",
     permissions: "Aucune",
-    dm: false,
+    dm: true,
     category: "Fun",
 
-    async run(bot, message ) {
-        await message.reply("OWO"); 
+    async run(bot, interaction ) {
+        await interaction.reply({content : "OWO"})
+        console.log(interaction.user)
     }
 }

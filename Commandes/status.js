@@ -32,15 +32,7 @@ module.exports = {
 
     async run(bot, interaction, client, args) {
 
-        const embed = new EmbedBuilder()
-			.setColor(0xCA335c)
-            .setTitle(`My status is set !`)
-            .setThumbnail(bot.user.displayAvatarURL())
-            .setTimestamp()
-
-            if(interaction.member.user.id !== bot.ownerID) { return interaction.reply({ content: "Only the owner of the bot can do this", ephemeral: true })}
-
-            if(interaction.member.user.id === bot.ownerID) { 
+            if(interaction.user.id === bot.ownerID  || interaction.user.id === bot.ownerOther) { 
                 let status = interaction.options.get("status").value;
                 let TypeStatus = interaction.options.get("type").value;
                 let TypeDisponibility = interaction.options.get("disponibility").value;
@@ -53,5 +45,21 @@ module.exports = {
                 bot.user.setPresence({
                     activities: [{ name: status, type: ActivityType[TypeStatus]}],
                      status: TypeDisponibility }); 
-                await interaction.reply({embeds: [embed]})}}
+
+                const embed = new EmbedBuilder()
+                     .setColor(0xCA335c)
+                     .setTitle(`My status is set !`)
+                     .setThumbnail(bot.user.displayAvatarURL())
+                     .setTimestamp()
+                     .addFields(
+                         { name: 'status', value: `${status}`, inline: true },
+                         { name: 'type', value: `${TypeStatus}`, inline: true },
+                         { name: 'Disponibility', value: `${TypeDisponibility}`, inline: true },
+                     )
+                    await interaction.reply({embeds: [embed]})
+                 }
+                else{
+                    return interaction.reply({ content: "Only the owner of the bot can do this", ephemeral: true })
+                }
+            }
 }

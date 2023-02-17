@@ -5,10 +5,10 @@ module.exports = {
     name: "uwu",
     description: "Répond uwu",
     permissions: "Aucune",
-    dm: false,
+    dm: true,
     category: "Fun",
 
-    async run(bot, interaction, args) {
+    async run(bot, interaction) {
 
     const file = new AttachmentBuilder('./other/uwu.jpg')
 

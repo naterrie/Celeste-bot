@@ -6,6 +6,7 @@ const loadEvents = require("./Loaders/loadEvents")
 const config = require("./config")
 
 bot.ownerID = "887337358171713578"
+bot.ownerOther = "779435257094864947"
 bot.commands = new Discord.Collection()
 
 bot.login(config.token)
