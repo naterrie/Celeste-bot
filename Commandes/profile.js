@@ -3,7 +3,7 @@ const { EmbedBuilder } = require('discord.js')
 module.exports = {
 
     name: "profile",
-    description: "in dev",
+    description: "Give information about you",
     permissions: "Aucune",
     dm: true,
     category: "Usefull",
@@ -27,7 +27,7 @@ module.exports = {
             .setImage(interaction.user.displayAvatarURL())
             .setTimestamp(interaction.member.joinedTimestamp)
             .setFooter({text : "Tu as rejoins le"})
-            await interaction.reply({content : `${interaction.user.banner}`, embeds: [embed]},)
+            await interaction.reply({embeds: [embed]})
         } catch (err) {
             const embed = new EmbedBuilder()
 			.setColor(0xCA335c)

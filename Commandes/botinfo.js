@@ -3,7 +3,7 @@ const { EmbedBuilder } = require('discord.js')
 module.exports = {
 
     name: "botinfo",
-    description: "in dev",
+    description: "Give information about the bot",
     permissions: "Aucune",
     dm: true,
     category: "Usefull",
