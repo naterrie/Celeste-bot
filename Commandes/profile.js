@@ -21,9 +21,9 @@ module.exports = {
                 { name: "Username", value : `${interaction.user.username}`, inline: true },
                 { name: "Tag", value : `#${interaction.user.discriminator}`, inline: true },
                 { name: "Nickname", value : `${interaction.member.nickname}`, inline: true },
-                { name: "Avatar", value : ` `},
                 { name: "Création", value : `${interaction.user.createdAt}`},
-            )
+                { name: "Avatar", value : ` `},
+                      )
             .setImage(interaction.user.displayAvatarURL())
             .setTimestamp(interaction.member.joinedTimestamp)
             .setFooter({text : "Tu as rejoins le"})
@@ -35,8 +35,8 @@ module.exports = {
             .addFields(
                 { name: "Username", value : `${interaction.user.username}`, inline: true },
                 { name: "Tag", value : `#${interaction.user.discriminator}`, inline: true },
-                { name: "Avatar", value : ` `},
                 { name: "Création", value : `${interaction.user.createdAt}`},
+                { name: "Avatar", value : ` `},
             )
             .setImage(interaction.user.displayAvatarURL())
             .setTimestamp()
