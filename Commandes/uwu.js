@@ -6,7 +6,7 @@ module.exports = {
     description: "Répond uwu",
     permissions: "Aucune",
     dm: true,
-    category: "Fun",
+    category: "Cringe",
 
     async run(bot, interaction) {
 

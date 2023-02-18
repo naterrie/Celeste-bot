@@ -16,28 +16,31 @@ module.exports = {
         }
         const embed = new EmbedBuilder()
 			.setColor(0xCA335c)
-            .setTitle(`What about you ?`)
+            .setTitle(`A propos de toi`)
             .addFields(
-                { name: "Nickname", value : `${interaction.user.username}`, inline: true },
+                { name: "Username", value : `${interaction.user.username}`, inline: true },
                 { name: "Tag", value : `#${interaction.user.discriminator}`, inline: true },
                 { name: "Nickname", value : `${interaction.member.nickname}`, inline: true },
+                { name: "Avatar", value : ` `},
+                { name: "Création", value : `${interaction.user.createdAt}`},
             )
-            .setThumbnail(interaction.user.displayAvatarURL())
+            .setImage(interaction.user.displayAvatarURL())
             .setTimestamp(interaction.member.joinedTimestamp)
-            .setFooter({text : "You've join the server the"})
+            .setFooter({text : "Tu as rejoins le"})
             await interaction.reply({content : `${interaction.user.banner}`, embeds: [embed]},)
         } catch (err) {
             const embed = new EmbedBuilder()
 			.setColor(0xCA335c)
-            .setTitle(`What about you ?`)
+            .setTitle(`A propos de toi`)
             .addFields(
-                { name: "Nickname", value : `${interaction.user.username}`, inline: true },
+                { name: "Username", value : `${interaction.user.username}`, inline: true },
                 { name: "Tag", value : `#${interaction.user.discriminator}`, inline: true },
+                { name: "Avatar", value : ` `},
+                { name: "Création", value : `${interaction.user.createdAt}`},
             )
-            .setThumbnail(interaction.user.displayAvatarURL())
+            .setImage(interaction.user.displayAvatarURL())
             .setTimestamp()
-            await interaction.reply({content : `${interaction.user.banner}`, embeds: [embed]},)
-
+            await interaction.reply({embeds: [embed]})
         }
     }
 }
