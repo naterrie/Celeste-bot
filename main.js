@@ -12,3 +12,4 @@ bot.commands = new Discord.Collection()
 bot.login(config.token)
 loadCommands(bot)
 loadEvents(bot)
+

@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 
 module.exports = async (bot, message) => {
 
-    let prefix = "*";
+    let prefix = "";
 
     let messageArray = message.content.split(" ")
     let commandName = messageArray[0].slice(prefix.length)
@@ -10,10 +10,9 @@ module.exports = async (bot, message) => {
 
     if(!message.content.startsWith(prefix)) return;
 
-    /*try {
-    let command = require(`../Commandes/${commandName}`)
-        command.run(bot, message, args)
-    } catch (err) {
-        message.reply("La commande n'existe pas !")
-    }*/
+    // try {
+    // let command = require(`../Commandes/${commandName}`)
+    //     command.run(bot, message, args)
+    // } catch (err) {
+        // }
 }

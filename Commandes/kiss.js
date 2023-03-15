@@ -10,15 +10,15 @@ module.exports = {
     category: "Cringe",
     options: [
         {
-            type: "user",
-            name: "membre",
-            description: "user to kiss",
-            required: true
+			type: "user",
+			name: "membre",
+			description: "user to kiss",
+			required: true
         }
     ],
-    
+
     async run(bot, interaction, args) {
-    
+
         let user = interaction.options.getUser("membre")
         if(interaction.member.user.id == user.id) return interaction.reply({ content : "Tu ne peux pas t'embrasser toi même", ephemeral : true })
         if(user.bot === true) return interaction.reply({ content : "Tu ne peux pas embrasser des robots", ephemeral : true })
@@ -32,7 +32,7 @@ module.exports = {
             .setImage(`attachment://${getRandomTag}`)
             .setDescription(`${interaction.user} à embrassé.e : <@${user.id}>`)
 
-        await interaction.reply({embeds: [embed], files: [file] }) 
+        await interaction.reply({embeds: [embed], files: [file] })
 
     }
 }

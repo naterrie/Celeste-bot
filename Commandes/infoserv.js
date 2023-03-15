@@ -25,6 +25,5 @@ module.exports = {
         .setTimestamp(interaction.guild.createdAt)
         .setFooter({text : "serveur crée le"})
         await interaction.reply({embeds: [embed]})
-        console.log(interaction.guild.channels)
     }
 }

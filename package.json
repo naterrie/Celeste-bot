@@ -1,15 +1,24 @@
 {
-  "name": "owo",
+  "name": "celeste",
   "version": "1.0.0",
   "description": "test",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Celeste",
   "license": "ISC",
   "dependencies": {
     "@discordjs/rest": "^1.5.0",
+    "discord": "^0.8.2",
     "discord.js": "^14.7.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naterrie/owo-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/naterrie/owo-bot/issues"
+  },
+  "homepage": "https://github.com/naterrie/owo-bot#readme"
 }
