@@ -4,7 +4,7 @@ const Discord = require("discord.js")
 module.exports = {
 
     name: "delete",
-    description: "delete messages",
+    description: "Have a bug",
     permission: Discord.PermissionFlagsBits.ModerateMembers,
     dm: false,
     category: "Mod",
@@ -21,11 +21,15 @@ module.exports = {
 
         let number = interaction.options.getNumber("nombre")
 
-        try {
-		await interaction.channel.bulkDelete(parseInt(number))
-        await interaction.reply({ content: `${number} messages supprimés`, ephemeral: true })
-        } catch (error) {
-            await interaction.reply({ content: "Des messages trop vieux ont essayé d'être supprimés", ephemeral: true })
+
+        if (interaction.member.id === bot.ownerID || interaction.member.id === bot.ownerOther)
+        {
+            try {
+		    await interaction.channel.bulkDelete(parseInt(number))
+            await interaction.reply({ content: `${number} messages supprimés`, ephemeral: true })
+            } catch (error) {
+                await interaction.reply({ content: "Des messages trop vieux ont essayé d'être supprimés", ephemeral: true })
+            }
         }
     }
 }

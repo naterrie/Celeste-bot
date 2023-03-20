@@ -9,11 +9,9 @@ module.exports = async (bot, oldUser, newUser) => {
     .setColor(0xCA335c)
     .setTitle(`An user change !`)
     .addFields(
-        { name: "Old username", value : `${oldUser.username}`, inline: true },
-        { name: "New username", value : `${newUser.username}`, inline: true},
-        { name: "Old tag", value : `#${oldUser.discriminator}`, inline: true },
-        { name: "New tag", value : `#${newUser.discriminator}`, inline: true },
-        { name: "New Avatar", value : ` `},
+        { name: "Username", value : `${oldUser.username} -> ${newUser.username}`},
+        { name: "Tag", value : `#${oldUser.discriminator} -> #${newUser.discriminator}`},
+        { name: "Avatar", value : ` `},
     )
     .setImage(newUser.displayAvatarURL())
     channel.send({embeds: [embed]})
