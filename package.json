@@ -11,7 +11,7 @@
   "dependencies": {
     "@discordjs/rest": "^1.5.0",
     "discord": "^0.8.2",
-    "discord.js": "^14.7.1"
+    "discord.js": "^14.8.0"
   },
   "repository": {
     "type": "git",

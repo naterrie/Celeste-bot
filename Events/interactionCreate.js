@@ -10,7 +10,7 @@ module.exports = async (bot, interaction) => {
     if(interaction.type === "setstatus") {
         let choices = ["Listening", "Watching", "Streaming", "Playing", "Competiting"]
         let sortie = choices.filter(c => c.includes(entry))
-        await interaction.respond(entry === "" ? sortie.map(c => ({name: c, value: c})) : sortie.map(c => ({name: c, value: c}))) 
+        await interaction.respond(entry === "" ? sortie.map(c => ({name: c, value: c})) : sortie.map(c => ({name: c, value: c})))
     }
     }
 }
