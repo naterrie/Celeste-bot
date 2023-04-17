@@ -21,7 +21,10 @@ module.exports = {
 
         let number = interaction.options.getNumber("nombre")
 
-
+        if (interaction.guildId === "382938797442334720")
+        {
+            return await interaction.reply({ content: "Pas sur ce serveur", ephemeral: true })
+        }
         if (interaction.member.id === bot.ownerID || interaction.member.id === bot.ownerOther)
         {
             try {
