@@ -8,13 +8,12 @@ module.exports = {
     dm: false,
     category: "Usefull",
 
-    
+
     async run(bot, interaction) {
-    
+
         const embed = new EmbedBuilder()
         .setColor(0xCA335c)
         .setTitle(`A propos du serveur`)
-        //.setThumbnail(interaction.guild.iconURL())
         .addFields(
             { name: "Nombre de membres", value: `${interaction.guild.memberCount}`},
             { name: "Nom du serveur", value: `${interaction.guild.name}`},

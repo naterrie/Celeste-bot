@@ -23,6 +23,6 @@ module.exports = async (bot, messages, channel) => {
     )
     channels.send({embeds: [embed]})
     } catch (error) {
-        console.log()
+        return;
     }
 }
