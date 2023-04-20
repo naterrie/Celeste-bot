@@ -6,7 +6,7 @@ const { Routes } = require("discord.js");
 module.exports = async (bot, message) => {
     const channel = bot.channels.cache.get('1084914127258005574');
 
-    if (message.author.bot === true || message.type === 6)
+    if (message.author.bot === true || message.type === 6 || message.channelId === "461606547064356864")
         return
     try
     {
