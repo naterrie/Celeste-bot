@@ -20,6 +20,6 @@ module.exports = {
 					.setStyle(ButtonStyle.Primary)
                     .setDisabled(false),
 			);
-        await interaction.reply({ content: `Button :`, components: [row]})
+        await interaction.reply({ content: `Button :`, components: [row]});
     }
-}
+};

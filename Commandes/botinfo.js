@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require('discord.js')
+const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
 
@@ -20,7 +20,7 @@ module.exports = {
                 { name: "Ping", value: `My ping is : ${bot.ws.ping}`, inline: true },
                 { name: "Creation date", value: `${bot.user.createdAt}`, inline: true },
             )
-            .setTimestamp()
-        await interaction.reply({embeds: [embed]})
+            .setTimestamp();
+        await interaction.reply({embeds: [embed]});
     }
-}
+};

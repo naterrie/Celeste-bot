@@ -1,5 +1,5 @@
-const { PermissionsBitField } = require('discord.js')
-const Discord = require("discord.js")
+const { PermissionsBitField } = require('discord.js');
+const Discord = require("discord.js");
 
 module.exports = {
 
@@ -19,21 +19,21 @@ module.exports = {
 
     async run(bot, interaction, args)
     {
-        let number = interaction.options.getNumber("nombre")
+        let number = interaction.options.getNumber("nombre");
 
         if (interaction.guildId === "382938797442334720")
-        {
-            return await interaction.reply({ content: "Pas sur ce serveur", ephemeral: true })
-        }
+            return await interaction.reply({ content: "Pas sur ce serveur", ephemeral: true });
         if (interaction.member.id === bot.ownerID || interaction.member.id === bot.ownerOther)
         {
             try
             {
-		    await interaction.channel.bulkDelete(parseInt(number))
-            await interaction.reply({ content: `${number} messages supprimés`, ephemeral: true })
-            } catch (error) {
-                await interaction.reply({ content: "Des messages trop vieux ont essayé d'être supprimés", ephemeral: true })
+		    await interaction.channel.bulkDelete(parseInt(number));
+            await interaction.reply({ content: `${number} messages supprimés`, ephemeral: true });
+            }
+            catch (error)
+            {
+                await interaction.reply({ content: "Des messages trop vieux ont essayé d'être supprimés", ephemeral: true });
             }
         }
     }
-}
+};

@@ -1,8 +1,6 @@
-const { EmbedBuilder, DiscordjsErrorCodes } = require('discord.js')
-const { Client, GatewayIntentBits, ActivityType } = require('discord.js')
-const Discord = require("discord.js")
-
-
+const { EmbedBuilder, DiscordjsErrorCodes } = require('discord.js');
+const { Client, GatewayIntentBits, ActivityType } = require('discord.js');
+const Discord = require("discord.js");
 
 module.exports = {
 
@@ -58,9 +56,9 @@ module.exports = {
                         { name: 'type', value: `${TypeStatus}`, inline: true },
                         { name: 'Disponibility', value: `${TypeDisponibility}`, inline: true },
                     )
-            await interaction.reply({embeds: [embed], ephemeral: true})
+            await interaction.reply({embeds: [embed], ephemeral: true});
         }
         else
-            return interaction.reply({ content: "Only the owner of the bot can do this", ephemeral: true })
+            return interaction.reply({ content: "Only the owner of the bot can do this", ephemeral: true });
     }
-}
+};

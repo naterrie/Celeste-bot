@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require('discord.js')
+const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
 
@@ -12,17 +12,17 @@ module.exports = {
     async run(bot, interaction)
     {
         const embed = new EmbedBuilder()
-        .setColor(0xCA335c)
-        .setTitle(`A propos du serveur`)
-        .addFields(
-            { name: "Nombre de membres", value: `${interaction.guild.memberCount}`},
-            { name: "Nom du serveur", value: `${interaction.guild.name}`},
-            { name: "Owner", value : `<@${interaction.guild.ownerId}>`},
-            { name: "Image :", value: " "},
-            )
-        .setImage(interaction.guild.iconURL())
-        .setTimestamp(interaction.guild.createdAt)
-        .setFooter({text : "serveur crée le"})
-        await interaction.reply({embeds: [embed]})
+            .setColor(0xCA335c)
+            .setTitle(`A propos du serveur`)
+            .addFields(
+                { name: "Nombre de membres", value: `${interaction.guild.memberCount}`},
+                { name: "Nom du serveur", value: `${interaction.guild.name}`},
+                { name: "Owner", value : `<@${interaction.guild.ownerId}>`},
+                { name: "Image :", value: " "},
+                )
+            .setImage(interaction.guild.iconURL())
+            .setTimestamp(interaction.guild.createdAt)
+            .setFooter({text : "serveur crée le"});
+        await interaction.reply({embeds: [embed]});
     }
-}
+};
