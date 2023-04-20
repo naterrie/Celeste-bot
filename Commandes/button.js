@@ -7,12 +7,13 @@ module.exports = {
     permissions: "Aucune",
     dm: true,
 
-    async run(bot, interaction) {
-
+    async run(bot, interaction)
+    {
         if (!interaction.isChatInputCommand()) return;
 
         const row = new ActionRowBuilder()
-			.addComponents(
+			.addComponents
+            (
 				new ButtonBuilder()
 					.setCustomId('primary')
 					.setLabel('In test')

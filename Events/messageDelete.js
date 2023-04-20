@@ -15,14 +15,14 @@ module.exports = async (bot, message) => {
     } catch (err)
     {
         const embed = new EmbedBuilder()
-        .setColor(0xCA335c)
-        .setTitle(`Message delete`)
-        .addFields(
-        { name: "Send by :", value : `${message.author.username}#${message.author.discriminator}`, inline: true },
-        { name: "Server :", value : `${message.guild.name}`, inline: true },
-        { name: "Channel :", value : `${message.channel.name}`, inline: true },
-        { name: "content :", value : `${message.content}`},
-        )
+            .setColor(0xCA335c)
+            .setTitle(`Message delete`)
+            .addFields(
+            { name: "Send by :", value : `${message.author.username}#${message.author.discriminator}`, inline: true },
+            { name: "Server :", value : `${message.guild.name}`, inline: true },
+            { name: "Channel :", value : `${message.channel.name}`, inline: true },
+            { name: "content :", value : `${message.content}`},
+            )
         channel.send({embeds: [embed]})
     }
 }

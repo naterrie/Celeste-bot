@@ -8,12 +8,12 @@ module.exports = {
     dm: true,
     category: "Usefull",
 
-    async run(bot, interaction) {
-
+    async run(bot, interaction)
+    {
         try {
-        if(interaction.member.nickname === null) {
+        if(interaction.member.nickname === null)
             interaction.member.nickname = "Aucun";
-        }
+
         const embed = new EmbedBuilder()
 			.setColor(0xCA335c)
 			.setTitle(`A propos de toi`)
@@ -28,7 +28,9 @@ module.exports = {
             .setTimestamp(interaction.member.joinedTimestamp)
             .setFooter({text : "Tu as rejoins le"})
             await interaction.reply({embeds: [embed]})
-        } catch (err) {
+        }
+        catch (err)
+        {
             const embed = new EmbedBuilder()
 			.setColor(0xCA335c)
             .setTitle(`A propos de toi`)

@@ -17,8 +17,8 @@ module.exports = {
         }
     ],
 
-    async run(bot, interaction, args) {
-
+    async run(bot, interaction, args)
+    {
         let number = interaction.options.getNumber("nombre")
 
         if (interaction.guildId === "382938797442334720")
@@ -27,7 +27,8 @@ module.exports = {
         }
         if (interaction.member.id === bot.ownerID || interaction.member.id === bot.ownerOther)
         {
-            try {
+            try
+            {
 		    await interaction.channel.bulkDelete(parseInt(number))
             await interaction.reply({ content: `${number} messages supprimés`, ephemeral: true })
             } catch (error) {

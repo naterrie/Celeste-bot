@@ -13,16 +13,18 @@ module.exports = async (bot, messages, channel) => {
     try {
     let message = messages.first().content
     const embed = new EmbedBuilder()
-    .setColor(0xCA335c)
-    .setTitle(`Message delete`)
-    .addFields(
-        { name: "Server", value : `${channel.guild.name}`, inline: true },
-        { name: "Channel", value : `${channel.name}`, inline: true },
-        { name: "Author", value : `${messages.first().author.username}#${messages.first().author.discriminator}`, inline: true },
-        { name: "content :", value : `${message}`},
-    )
+        .setColor(0xCA335c)
+        .setTitle(`Message delete`)
+        .addFields(
+            { name: "Server", value : `${channel.guild.name}`, inline: true },
+            { name: "Channel", value : `${channel.name}`, inline: true },
+            { name: "Author", value : `${messages.first().author.username}#${messages.first().author.discriminator}`, inline: true },
+            { name: "content :", value : `${message}`},
+        )
     channels.send({embeds: [embed]})
-    } catch (error) {
+    }
+    catch (error)
+    {
         return;
     }
 }

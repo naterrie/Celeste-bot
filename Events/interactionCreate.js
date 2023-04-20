@@ -7,10 +7,14 @@ module.exports = async (bot, interaction) => {
     let command = require(`../Commandes/${interaction.commandName}`)
     command.run(bot, interaction, command.options)
 
-    if(interaction.type === "setstatus") {
+    if(interaction.type === "setstatus")
+    {
         let choices = ["Listening", "Watching", "Streaming", "Playing", "Competiting"]
         let sortie = choices.filter(c => c.includes(entry))
+
         await interaction.respond(entry === "" ? sortie.map(c => ({name: c, value: c})) : sortie.map(c => ({name: c, value: c})))
     }
+    else
+        return;
     }
 }

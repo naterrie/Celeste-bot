@@ -8,8 +8,8 @@ module.exports = {
     dm: true,
     category: "Usefull",
 
-    async run(bot, interaction) {
-
+    async run(bot, interaction)
+    {
         const embed = new EmbedBuilder()
 			.setColor(0xCA335c)
             .setTitle(`What about me ?`)
@@ -21,6 +21,6 @@ module.exports = {
                 { name: "Creation date", value: `${bot.user.createdAt}`, inline: true },
             )
             .setTimestamp()
-            await interaction.reply({embeds: [embed]})
+        await interaction.reply({embeds: [embed]})
     }
 }

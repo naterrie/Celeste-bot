@@ -9,8 +9,8 @@ module.exports = {
     category: "Usefull",
 
 
-    async run(bot, interaction) {
-
+    async run(bot, interaction)
+    {
         const embed = new EmbedBuilder()
         .setColor(0xCA335c)
         .setTitle(`A propos du serveur`)

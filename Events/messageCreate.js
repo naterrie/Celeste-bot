@@ -4,7 +4,9 @@ module.exports = async (bot, message) => {
     try {
     let command = require(`../message/${message.content}`)
         command.run(bot, message)
-    } catch (err) {
-        return
-        }
+    }
+    catch (err)
+    {
+        return;
+    }
 }

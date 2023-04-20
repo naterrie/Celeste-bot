@@ -17,21 +17,20 @@ module.exports = {
         }
     ],
 
-    async run(bot, interaction, args) {
-
+    async run(bot, interaction, args)
+    {
         let user = interaction.options.getUser("membre")
-        if(interaction.member.user.id == user.id) return interaction.reply({ content : "Tu ne peux pas t'embrasser toi même", ephemeral : true })
-        if(user.bot === true) return interaction.reply({ content : "Tu ne peux pas embrasser des robots", ephemeral : true })
-
         const folder = fs.readdirSync('./other/kiss/')
         const getRandomTag = folder[~~(folder.length * Math.random())]
         const file = new AttachmentBuilder(`./other/kiss/${getRandomTag}`)
 
+        if(interaction.member.user.id == user.id) return interaction.reply({ content : "Tu ne peux pas t'embrasser toi même", ephemeral : true })
+        if(user.bot === true) return interaction.reply({ content : "Tu ne peux pas embrasser des robots", ephemeral : true })
+
         const embed = new EmbedBuilder()
-			.setColor(0xCA335c)
+		    .setColor(0xCA335c)
             .setImage(`attachment://${getRandomTag}`)
             .setDescription(`${interaction.user} à embrassé.e : <@${user.id}>`)
-
         await interaction.reply({embeds: [embed], files: [file] })
 
     }
