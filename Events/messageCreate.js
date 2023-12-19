@@ -12,12 +12,10 @@ module.exports = async (bot, message) => {
 	  let commandFile = (`../commands/message/${content}.js`);
 
 	  try {
-		console.log(commandFile);
 		let command = require(commandFile);
 		await command.run(bot, message);
 	  } catch (error) {
-		console.error(error);
-		message.reply(`Commande non trouvée ou erreur lors de l\'exécution : ${commandFile}`);
+		return ;
 	  }
 	}
   };

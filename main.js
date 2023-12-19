@@ -4,12 +4,20 @@ const bot = new Discord.Client({intents});
 const loadCommands = require("./Loaders/loadCommands");
 const loadEvents = require("./Loaders/loadEvents");
 const config = require("./config");
+const connectDatabase = require("./mongoose");
 
 bot.ownerID = "887337358171713578";
 bot.ownerOther = "779435257094864947";
 bot.commands = new Discord.Collection();
 
-bot.login(config.token_discord);
-loadCommands(bot);
-loadEvents(bot);
+(async () => {
+	try {
+	  await connectDatabase(); // Attendez que la connexion à la base de données soit établie
+	  await loadCommands(bot); // Chargez les commandes
+	  await loadEvents(bot); // Chargez les événements
+	  await bot.login(config.token_discord); // Connectez-vous au bot Discord
+	} catch (error) {
+	  console.error('Une erreur s\'est produite :', error);
+	}
+  })();
 

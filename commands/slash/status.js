@@ -1,11 +1,10 @@
-const { EmbedBuilder, DiscordjsErrorCodes } = require('discord.js');
-const { Client, GatewayIntentBits, ActivityType } = require('discord.js');
-const Discord = require("discord.js");
+const { EmbedBuilder } = require('discord.js');
+const { ActivityType } = require('discord.js');
 
 module.exports = {
 
 	name: "status",
-	description: "in dev",
+	description: "Change the status of the bot",
 	permissions: "Aucune",
 	dm: true,
 	category: "Usefull",
@@ -28,7 +27,7 @@ module.exports = {
 		}
 	],
 
-	async run(bot, interaction, client, args)
+	async run(bot, interaction)
 	{
 		if(interaction.user.id === bot.ownerID  || interaction.user.id === bot.ownerOther)
 		{

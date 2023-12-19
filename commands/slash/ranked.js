@@ -38,7 +38,7 @@ module.exports = {
 			const PUUID = await axios.get(`https://${region}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${summoner}/${tag}?api_key=${config.token_riot}`);
 			const player = await axios.get(`https://${config.region}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${PUUID.data.puuid}?api_key=${config.token_riot}`);
 			const ranked = await axios.get(`https://${config.region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${player.data.id}?api_key=${config.token_riot}`);
-			const avatarUrl = `https://ddragon.leagueoflegends.com/cdn/11.1.1/img/profileicon/${player.data.profileIconId}.png`;
+			const avatarUrl = `https://ddragon.leagueoflegends.com/cdn/11.1.1/img/profileicon/${player.data.profileIconId}.png`
 			const tier = ranked.data[0].tier.charAt(0).toUpperCase() + ranked.data[0].tier.slice(1).toLowerCase();
 			const embed = new EmbedBuilder()
 				.setColor(0xCA335c)

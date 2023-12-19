@@ -1,4 +1,3 @@
-const Discord = require("discord.js");
 const axios = require("axios");
 const config = require("../../config.js");
 const { EmbedBuilder } = require('discord.js');
@@ -7,7 +6,7 @@ const champname = require("../../champ.js");
 module.exports = {
 
 	name: "playerinfo",
-	description: "Send a message with the bot",
+	description: "Get informations about the player",
 	permissions: "Aucune",
 	dm: true,
 	category: "usefull",

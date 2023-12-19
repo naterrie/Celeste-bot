@@ -1,4 +1,3 @@
-const Discord = require("discord.js");
 const axios = require("axios");
 const config = require("../../config.js");
 const { EmbedBuilder } = require('discord.js');
@@ -7,7 +6,7 @@ const champname = require("../../champ.js");
 module.exports = {
 
 	name: "topchamp",
-	description: "Send a message with the bot",
+	description: "GEt top 3 champ of a summoner",
 	permissions: "Aucune",
 	dm: true,
 	category: "usefull",
@@ -38,7 +37,6 @@ module.exports = {
 			const tag = interaction.options.getString("tag");
 			const region = interaction.options.getString("region");
 			const PUUID = await axios.get(`https://${region}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${summoner}/${tag}?api_key=${config.token_riot}`);
-			const level = await axios.get(`https://${config.region}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${PUUID.data.puuid}?api_key=${config.token_riot}`);
 			const temp = await axios.get(`https:${config.region}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${PUUID.data.puuid}/top?api_key=${config.token_riot}`)
 			let champ = temp.data;
 			for (let i = 0; i < 3; i++)
