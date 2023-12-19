@@ -35,14 +35,15 @@ module.exports = {
 			const region = interaction.options.getString("region");
 			const PUUID = await axios.get(`https://${region}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${summoner}/${tag}?api_key=${config.token_riot}`);
 			const player = await axios.get(`https://${config.region}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${PUUID.data.puuid}?api_key=${config.token_riot}`);
+
 			try {
-			const newUser = new User({
-				DiscordId: interaction.user.id,
-				SummonerName: summoner,
-				Tag: tag,
-				Region: region,
-				Puuid: PUUID.data.puuid,
-				AccountId: player.data.accountId,
+				const newUser = new User({
+					DiscordId: interaction.user.id,
+					SummonerName: summoner,
+					Tag: tag,
+					Region: region,
+					Puuid: PUUID.data.puuid,
+					AccountId: player.data.accountId,
 			});
 			await newUser.save();
 			await interaction.reply({ content: "Vous êtes désormais connecté", ephemeral: true });

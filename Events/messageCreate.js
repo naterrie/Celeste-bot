@@ -8,14 +8,14 @@ module.exports = async (bot, message) => {
 		return;
 
 	if (content.startsWith(prefix)) {
-	  content = content.slice(prefix.length).trim();
-	  let commandFile = (`../commands/message/${content}.js`);
+		content = content.slice(prefix.length).trim();
+		let commandFile = (`../commands/message/${content}.js`);
 
-	  try {
-		let command = require(commandFile);
-		await command.run(bot, message);
-	  } catch (error) {
-		return ;
-	  }
+		try {
+			let command = require(commandFile);
+			await command.run(bot, message);
+		} catch (error) {
+			return ;
+		}
 	}
-  };
+};
