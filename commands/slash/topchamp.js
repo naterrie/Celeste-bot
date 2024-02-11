@@ -2,49 +2,34 @@ const axios = require("axios");
 const config = require("../../config.js");
 const { EmbedBuilder } = require('discord.js');
 const champname = require("../../champ.js");
+const mongoose = require('mongoose');
+const DB = require("../../mongoose.js");
 
 module.exports = {
 
 	name: "topchamp",
-	description: "GEt top 3 champ of a summoner",
+	description: "Get top 3 champ of a summoner",
 	permissions: "Aucune",
 	dm: true,
 	category: "usefull",
-	options: [
-		{
-			type: "string",
-			name: "summoner",
-			description: "get stats of a summoner",
-			required: true
-		}, {
-			type: "string",
-			name: "tag",
-			description: "the tag of the summoner",
-			required: true
-		}, {
-			type: "string",
-			name: "region",
-			description: "the region of the summoner",
-			required: true
-		},
-
-	],
 
 	async run(bot, interaction)
 	{
 		try {
-			const summoner = interaction.options.getString("summoner");
-			const tag = interaction.options.getString("tag");
-			const region = interaction.options.getString("region");
-			const PUUID = await axios.get(`https://${region}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${summoner}/${tag}?api_key=${config.token_riot}`);
-			const temp = await axios.get(`https:${config.region}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${PUUID.data.puuid}/top?api_key=${config.token_riot}`)
+			const User = await DB.findOne({DiscordId: interaction.user.id});
+			if (!User)
+			{
+				await interaction.reply({content : "Vous n'êtes pas connecté", ephemeral : true});
+				return ;
+			}
+			const temp = await axios.get(`https:${config.region}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${User.Puuid}/top?api_key=${config.token_riot}`)
 			let champ = temp.data;
 			for (let i = 0; i < 3; i++)
 				champ[i].championId = champname[temp.data[i].championId];
 			const url = `https://ddragon.leagueoflegends.com/cdn/13.24.1/img/champion/${champ[0].championId}.png`;
 			const embed = new EmbedBuilder()
 				.setColor(0xCA335c)
-				.setTitle(`${PUUID.data.gameName}#${PUUID.data.tagLine} top champ`)
+				.setTitle(`${User.Name}#${User.Tag} top champ`)
 				.addFields(
 					{ name: "Première place", value : `${champ[0].championId} : Maîtrise ${champ[0].championLevel} avec ${champ[0].championPoints} points`},
 					{ name: "Deuxième place", value : `${champ[1].championId} : Maîtrise ${champ[1].championLevel} avec ${champ[1].championPoints} points`},

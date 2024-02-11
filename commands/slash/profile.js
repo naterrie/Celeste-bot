@@ -7,7 +7,7 @@ const DB = require("../../mongoose.js");
 
 module.exports = {
 
-	name: "myprofile",
+	name: "profile",
 	description: "Get your profile",
 	permissions: "Aucune",
 	dm: true,
@@ -31,7 +31,7 @@ module.exports = {
 				.setColor(0xCA335c)
 				.setTitle(`Information sur le joueur`)
 				.addFields(
-					{ name: "Username", value : `${User.SummonerName}#${User.Tag}`, inline: true },
+					{ name: "Username", value : `${User.Name}#${User.Tag}`, inline: true },
 					{ name: "Niveau", value : `${player.data.summonerLevel}`, inline: true},
 					{ name: "Champion le plus joué", value : `${champ[0].championId} : Maîtrise ${champ[0].championLevel} avec ${champ[0].championPoints} points`},
 				)

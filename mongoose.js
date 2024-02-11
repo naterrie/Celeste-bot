@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
 		required: true,
 		unique: true
 	},
-	SummonerName: String,
+	Name: String,
 	Tag: String,
 	Region: String,
 	Puuid: {
@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
 		required: true,
 		unique: true
 	},
-	AccountId: String,
+	Id: String,
 });
 
 const User = mongoose.model('User', userSchema);

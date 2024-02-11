@@ -1,0 +1,32 @@
+const axios = require("axios");
+const config = require("../../config.js");
+const mongoose = require('mongoose');
+const User = require("../../mongoose.js");
+
+module.exports = {
+	name: "disconnect",
+	description: "Disconnect your profil",
+	permissions: "Aucune",
+	dm: true,
+	category: "usefull",
+	async run(bot, interaction)
+	{
+		try
+		{
+			const user = await User.findOne({ DiscordId: interaction.user.id });
+			if (user)
+			{
+				await User.deleteOne({ DiscordId: interaction.user.id });
+				await interaction.reply({ content: "Vous êtes désormais déconnecté", ephemeral: true });
+			}
+			else
+			{
+				await interaction.reply({ content: "Vous n'êtes pas connecté", ephemeral: true });
+			}
+		}
+		catch (error)
+		{
+			await interaction.reply({ content: "Erreur", ephemeral: true });
+		}
+	}
+}

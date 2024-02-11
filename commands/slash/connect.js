@@ -39,11 +39,11 @@ module.exports = {
 			try {
 				const newUser = new User({
 					DiscordId: interaction.user.id,
-					SummonerName: summoner,
+					Name: summoner,
 					Tag: tag,
 					Region: region,
 					Puuid: PUUID.data.puuid,
-					AccountId: player.data.accountId,
+					Id: player.data.accountId,
 			});
 			await newUser.save();
 			await interaction.reply({ content: "Vous êtes désormais connecté", ephemeral: true });

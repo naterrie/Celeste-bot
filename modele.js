@@ -6,11 +6,11 @@ const userSchema = new mongoose.Schema({
 		required: true,
 	unique: true
 	},
-	SummonerName: String,
+	Name: String,
 	Tag: String,
 	Region: String,
 	Puuid: String,
-	AccountId: String,
+	Id: String,
 });
 
 const User = mongoose.model('User', userSchema);
