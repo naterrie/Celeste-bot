@@ -7,7 +7,8 @@ module.exports = async (bot, message) => {
 	if (message.author.bot)
 		return;
 
-	if (content.startsWith(prefix)) {
+	if (content.startsWith(prefix))
+	{
 		content = content.slice(prefix.length).trim();
 		let commandFile = (`../commands/message/${content}.js`);
 

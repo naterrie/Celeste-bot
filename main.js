@@ -12,10 +12,10 @@ bot.commands = new Discord.Collection();
 
 (async () => {
 	try {
-	  await connectDatabase(); // Attendez que la connexion à la base de données soit établie
-	  await loadCommands(bot); // Chargez les commandes
-	  await loadEvents(bot); // Chargez les événements
-	  await bot.login(config.token_discord); // Connectez-vous au bot Discord
+	  await connectDatabase();
+	  await loadCommands(bot);
+	  await loadEvents(bot);
+	  await bot.login(config.token_discord);
 	} catch (error) {
 	  console.error('Une erreur s\'est produite :', error);
 	}

@@ -6,8 +6,8 @@ const mongoose = require('mongoose');
 const DB = require("../../mongoose.js");
 
 module.exports = {
-	name: "gameinfo",
-	description: "Get information about a game",
+	name: "gamelive",
+	description: "Get stats of your current game",
 	permissions: "Aucune",
 	dm: true,
 	category: "usefull",

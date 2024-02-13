@@ -35,6 +35,7 @@ module.exports = {
 			await interaction.reply({embeds: [embed]});
 		} catch (error) {
 			await interaction.reply({content : "API key expired", ephemeral : true});
+			console.log(error);
 		}
 	}
 }
