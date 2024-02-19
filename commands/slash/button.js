@@ -10,6 +10,7 @@ module.exports = {
 
 	async run(bot, interaction)
 	{
+		console.log(`${interaction.user.id} == ${interaction.user.username}`)
 		const previous = new ButtonBuilder()
 			.setCustomId("previous")
 			.setLabel("Previous")

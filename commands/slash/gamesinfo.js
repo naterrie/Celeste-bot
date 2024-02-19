@@ -36,11 +36,11 @@ module.exports = {
 				.addFields(
 					{ name: "Mode de jeu", value : `${game.data.info.gameMode}`},
 					{ name: "Durée de la partie", value : `${Math.floor(game.data.info.gameDuration / 60)} minutes`},
-					{ name: `${game.data.info.participants[0].summonerName} vs ${game.data.info.participants[5].summonerName}`, value: `${champname[game.data.info.participants[0].championId]} vs ${champname[game.data.info.participants[5].championId]}`},
-					{ name: `${game.data.info.participants[1].summonerName} vs ${game.data.info.participants[6].summonerName}`, value: `${champname[game.data.info.participants[1].championId]} vs ${champname[game.data.info.participants[6].championId]}`},
-					{ name: `${game.data.info.participants[2].summonerName} vs ${game.data.info.participants[7].summonerName}`, value: `${champname[game.data.info.participants[2].championId]} vs ${champname[game.data.info.participants[7].championId]}`},
-					{ name: `${game.data.info.participants[3].summonerName} vs ${game.data.info.participants[8].summonerName}`, value: `${champname[game.data.info.participants[3].championId]} vs ${champname[game.data.info.participants[8].championId]}`},
-					{ name: `${game.data.info.participants[4].summonerName} vs ${game.data.info.participants[9].summonerName}`, value: `${champname[game.data.info.participants[4].championId]} vs ${champname[game.data.info.participants[9].championId]}`},
+					{ name: `${game.data.info.participants[0].riotIdGameName} vs ${game.data.info.participants[5].riotIdGameName}`, value: `${champname[game.data.info.participants[0].championId]} vs ${champname[game.data.info.participants[5].championId]}`},
+					{ name: `${game.data.info.participants[1].riotIdGameName} vs ${game.data.info.participants[6].riotIdGameName}`, value: `${champname[game.data.info.participants[1].championId]} vs ${champname[game.data.info.participants[6].championId]}`},
+					{ name: `${game.data.info.participants[2].riotIdGameName} vs ${game.data.info.participants[7].riotIdGameName}`, value: `${champname[game.data.info.participants[2].championId]} vs ${champname[game.data.info.participants[7].championId]}`},
+					{ name: `${game.data.info.participants[3].riotIdGameName} vs ${game.data.info.participants[8].riotIdGameName}`, value: `${champname[game.data.info.participants[3].championId]} vs ${champname[game.data.info.participants[8].championId]}`},
+					{ name: `${game.data.info.participants[4].riotIdGameName} vs ${game.data.info.participants[9].riotIdGameName}`, value: `${champname[game.data.info.participants[4].championId]} vs ${champname[game.data.info.participants[9].championId]}`},
 				)
 				.setThumbnail(url)
 				.setTimestamp()

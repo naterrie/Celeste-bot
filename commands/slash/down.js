@@ -1,7 +1,7 @@
 module.exports = {
 
 	name: "down",
-	description: "Give the ping",
+	description: "Down the bot",
 	permissions: "Aucune",
 	dm: true,
 	category: "Usefull",
