@@ -1,6 +1,5 @@
-const Discord = require("discord.js");
-
 module.exports = async (bot, message) => {
+
 	let content = message.content;
 	const prefix = ";";
 
@@ -12,10 +11,13 @@ module.exports = async (bot, message) => {
 		content = content.slice(prefix.length).trim();
 		let commandFile = (`../commands/message/${content}.js`);
 
-		try {
+		try
+		{
 			let command = require(commandFile);
 			await command.run(bot, message);
-		} catch (error) {
+		}
+		catch (error)
+		{
 			return ;
 		}
 	}

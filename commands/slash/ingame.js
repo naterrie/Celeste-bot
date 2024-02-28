@@ -2,7 +2,6 @@ const axios = require("axios");
 const config = require("../../config.js");
 const { EmbedBuilder } = require('discord.js');
 const champname = require("../../champ.js");
-const mongoose = require('mongoose');
 const DB = require("../../mongoose.js");
 
 module.exports = {
@@ -14,30 +13,23 @@ module.exports = {
 
 	async run(bot, interaction)
 	{
-		try {
+		try
+		{
 			const User = await DB.findOne({DiscordId: interaction.user.id});
 			if (!User)
-			{
-				await interaction.reply({content : "Vous n'êtes pas connecté", ephemeral : true});
-				return ;
-			}
+			return await interaction.reply({content : "Vous n'êtes pas connecté", ephemeral : true});
+
 			const player = await axios.get(`https://${config.region}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${User.Puuid}?api_key=${config.token_riot}`);
 			let match = await axios.get(`https://${config.region}.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/${player.data.id}?api_key=${config.token_riot}`);
+
 			match.data.gameMode = match.data.gameMode.charAt(0).toUpperCase() + match.data.gameMode.slice(1).toLowerCase();
-			let idchamp;
-			let temp = 0;
-			while (match.data.participants[temp] && match.data.participants[temp].summonerName != User.Name)
-				temp++;
-			idchamp = match.data.participants[temp].championId;
+
+			const temp = match.data.participants.findIndex(participant => participant.summonerName === User.Name);
+			const idchamp = match.data.participants[temp]?.championId;
 			const avatarUrl = `https://ddragon.leagueoflegends.com/cdn/11.1.1/img/profileicon/${player.data.profileIconId}.png`;
-			let nb;
-			while (match.data.participants[nb])
-				nb++;
-			nb = nb / 2;
-			for (let i = 0; i < nb * 2; i++)
-				match.data.participants[i].championId = champname[match.data.participants[i].championId];
-			if (match.data.gameLength < 0)
-				match.data.gameLength = 0;
+			match.data.participants.forEach(participant => participant.championId = champname[participant.championId]);
+			match.data.gameLength = Math.max(0, match.data.gameLength);
+
 			const embed = new EmbedBuilder()
 				.setColor(0xCA335c)
 				.setTitle(`Information sur la partie`)
@@ -53,7 +45,8 @@ module.exports = {
 				.setThumbnail(avatarUrl)
 				.setTimestamp()
 			await interaction.reply({embeds: [embed]});
-		} catch (error) {
+		}catch (error)
+		{
 			await interaction.reply({content : "Erreur, Joueur non trouvé, ou aucune partie en cours", ephemeral : true});
 		}
 	}

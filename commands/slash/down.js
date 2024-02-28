@@ -14,8 +14,6 @@ module.exports = {
 			process.exit();
 		}
 		else
-		{
 			await interaction.reply({ content: "You are not the owner of the bot", ephemeral: true });
-		}
 	}
 };

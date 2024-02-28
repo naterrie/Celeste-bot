@@ -13,16 +13,20 @@ module.exports = {
 
 	async run(bot, interaction)
 	{
-		try {
+		try
+		{
 			const freechamp = await axios.get(`https://${config.region}.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=${config.token_riot}`);
 			let champ = String(freechamp.data.freeChampionIds).split(',');
 			let champ2 = String(freechamp.data.freeChampionIdsForNewPlayers).split(',');
+
 			for (let i = 0; i < champ.length; i++)
 				champ[i] = champname[champ[i]];
 			for (let i = 0; i < champ2.length; i++)
 				champ2[i] = champname[champ2[i]];
+
 			champ = champ.join(', ');
 			champ2 = champ2.join(', ');
+
 			const embed = new EmbedBuilder()
 				.setColor(0xCA335c)
 				.setTitle(`Champions gratuits de la semaine`)
@@ -32,10 +36,12 @@ module.exports = {
 					{ name: "Champions gratuits pour les nouveaux joueurs", value: `${champ2}`},
 					)
 				.setTimestamp();
+
 			await interaction.reply({embeds: [embed]});
-		} catch (error) {
+		}
+		catch (error)
+		{
 			await interaction.reply({content : "API key expired", ephemeral : true});
-			console.log(error);
 		}
 	}
 }

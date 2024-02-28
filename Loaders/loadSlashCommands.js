@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const  { REST } = require("@discordjs/rest");
+const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord.js");
 
 module.exports = async bot => {
@@ -14,10 +14,10 @@ module.exports = async bot => {
 	.setDMPermission(command.dm)
 	.setDefaultMemberPermissions(command.permission === "Aucune" ? null : command.permission);
 
-	if(command.options?.length >= 1) {
-		for(let i = 0; i < command.options.length; i++) {
+	if(command.options?.length >= 1)
+	{
+		for(let i = 0; i < command.options.length; i++)
 			slashcommand[`add${command.options[i].type.slice(0, 1).toUpperCase() + command.options[i].type.slice(1, command.options[i].type.length)}Option`](option => option.setName(command.options[i].name).setDescription(command.options[i].description).setRequired(command.options[i].required));
-		}
 	}
 
 	await commands.push(slashcommand);

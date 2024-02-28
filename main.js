@@ -11,13 +11,16 @@ bot.ownerOther = "779435257094864947";
 bot.commands = new Discord.Collection();
 
 (async () => {
-	try {
-	  await connectDatabase();
-	  await loadCommands(bot);
-	  await loadEvents(bot);
-	  await bot.login(config.token_discord);
-	} catch (error) {
-	  console.error('Une erreur s\'est produite :', error);
+	try
+	{
+		await connectDatabase();
+		await loadCommands(bot);
+		await loadEvents(bot);
+		await bot.login(config.token_discord);
 	}
-  })();
+	catch (error )
+	{
+		console.error('Une erreur s\'est produite :', error);
+	}
+})();
 

@@ -1,6 +1,3 @@
-const axios = require("axios");
-const config = require("../../config.js");
-const mongoose = require('mongoose');
 const User = require("../../mongoose.js");
 
 module.exports = {
@@ -20,9 +17,7 @@ module.exports = {
 				await interaction.reply({ content: "Vous êtes désormais déconnecté", ephemeral: true });
 			}
 			else
-			{
 				await interaction.reply({ content: "Vous n'êtes pas connecté", ephemeral: true });
-			}
 		}
 		catch (error)
 		{
