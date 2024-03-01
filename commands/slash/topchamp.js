@@ -25,7 +25,7 @@ module.exports = {
 			for (let i = 0; i < 3; i++)
 				champ[i].championId = champname[temp.data[i].championId];
 
-			const url = `https://ddragon.leagueoflegends.com/cdn/13.24.1/img/champion/${champ[0].championId}.png`;
+			const url = `https://ddragon.leagueoflegends.com/cdn/${config.version}/img/champion/${champ[0].championId}.png`;
 			const embed = new EmbedBuilder()
 				.setColor(0xCA335c)
 				.setTitle(`${User.Name}#${User.Tag} top champ`)

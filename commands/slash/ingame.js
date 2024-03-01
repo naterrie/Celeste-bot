@@ -26,7 +26,7 @@ module.exports = {
 
 			const temp = match.data.participants.findIndex(participant => participant.summonerName === User.Name);
 			const idchamp = match.data.participants[temp]?.championId;
-			const avatarUrl = `https://ddragon.leagueoflegends.com/cdn/11.1.1/img/profileicon/${player.data.profileIconId}.png`;
+			const avatarUrl = `https://ddragon.leagueoflegends.com/cdn/${config.version}/img/profileicon/${player.data.profileIconId}.png`;
 			match.data.participants.forEach(participant => participant.championId = champname[participant.championId]);
 			match.data.gameLength = Math.max(0, match.data.gameLength);
 
