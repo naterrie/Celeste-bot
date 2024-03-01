@@ -4,8 +4,8 @@ WORKDIR /app
 
 COPY package*.json .
 
-RUN npm update && npm install
+RUN npm update && npm install && npm install -g nodemon
 
 COPY . .
 
-CMD node main.js
+CMD nodemon main.js
