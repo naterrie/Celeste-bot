@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { pageGeneration } = require("../utils/utils.js");
+const { pageGeneration } = require("../utils/pageGeneration.js");
 
 module.exports = async (bot, interaction) => {
 

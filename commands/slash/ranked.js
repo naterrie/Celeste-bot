@@ -2,6 +2,7 @@ const axios = require("axios");
 const config = require("../../config.js");
 const { EmbedBuilder } = require('discord.js');
 const DB = require("../../mongoose.js");
+const { errBot } = require("../../utils/error.js");
 
 module.exports = {
 
@@ -38,7 +39,7 @@ module.exports = {
 		}
 		catch (error)
 		{
-			await interaction.reply({content : "Erreur, Joueur non trouvé", ephemeral : true});
+			await errBot(error, bot, interaction);
 		}
 	}
 };

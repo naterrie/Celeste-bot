@@ -1,4 +1,5 @@
 module.exports = {
+	901: "Smolder",
 	266: "Aatrox",
 	103: "Ahri",
 	84: "Akali",

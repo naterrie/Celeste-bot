@@ -1,4 +1,5 @@
-const { pageGeneration } = require("../../utils/utils.js");
+const { pageGeneration } = require("../../utils/pageGeneration.js");
+const { errBot } = require("../../utils/error.js");
 
 module.exports = {
 	name: "gamesinfo",
@@ -18,8 +19,7 @@ module.exports = {
 		}
 		catch (error)
 		{
-			await interaction.reply({content : "Erreur, Joueur non trouvé", ephemeral : true});
-			console.log(error);
+			await errBot(error, bot, interaction);
 		}
 	}
 }

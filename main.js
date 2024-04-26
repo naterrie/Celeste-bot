@@ -20,7 +20,6 @@ bot.commands = new Discord.Collection();
 	}
 	catch (error )
 	{
-		console.error('Une erreur s\'est produite :', error);
+		console.error('Une erreur au chargement s\'est produite :', error);
 	}
 })();
-

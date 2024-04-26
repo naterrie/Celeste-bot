@@ -2,6 +2,7 @@ const { EmbedBuilder } = require('discord.js');
 const axios = require("axios");
 const config = require("../../config.js");
 const champname = require("../../champ.js");
+const { errBot } = require("../../utils/error.js");
 
 module.exports = {
 
@@ -17,15 +18,15 @@ module.exports = {
 		{
 			const freechamp = await axios.get(`https://${config.region}.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=${config.token_riot}`);
 			let champ = String(freechamp.data.freeChampionIds).split(',');
-			let champ2 = String(freechamp.data.freeChampionIdsForNewPlayers).split(',');
+			let champnew = String(freechamp.data.freeChampionIdsForNewPlayers).split(',');
 
 			for (let i = 0; i < champ.length; i++)
 				champ[i] = champname[champ[i]];
-			for (let i = 0; i < champ2.length; i++)
-				champ2[i] = champname[champ2[i]];
+			for (let i = 0; i < champnew.length; i++)
+				champnew[i] = champname[champnew[i]];
 
 			champ = champ.join(', ');
-			champ2 = champ2.join(', ');
+			champnew = champnew.join(', ');
 
 			const embed = new EmbedBuilder()
 				.setColor(0xCA335c)
@@ -33,7 +34,7 @@ module.exports = {
 				.setDescription(`Voici la liste des champions gratuits de la semaine :`)
 				.addFields(
 					{ name: "Champions gratuits", value: `${champ}`},
-					{ name: "Champions gratuits pour les nouveaux joueurs", value: `${champ2}`},
+					{ name: "Champions gratuits pour les nouveaux joueurs", value: `${champnew}`},
 					)
 				.setTimestamp();
 
@@ -41,7 +42,7 @@ module.exports = {
 		}
 		catch (error)
 		{
-			await interaction.reply({content : "API key expired", ephemeral : true});
+			await errBot(error, bot, interaction);
 		}
 	}
 }

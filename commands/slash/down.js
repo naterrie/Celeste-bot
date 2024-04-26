@@ -17,3 +17,5 @@ module.exports = {
 			await interaction.reply({ content: "You are not the owner of the bot", ephemeral: true });
 	}
 };
+
+

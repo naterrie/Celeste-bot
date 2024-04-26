@@ -3,6 +3,7 @@ const config = require("../../config.js");
 const { EmbedBuilder } = require('discord.js');
 const champname = require("../../champ.js");
 const DB = require("../../mongoose.js");
+const { errBot } = require("../../utils/error.js");
 
 module.exports = {
 	name: "ingame",
@@ -24,11 +25,17 @@ module.exports = {
 
 			match.data.gameMode = match.data.gameMode.charAt(0).toUpperCase() + match.data.gameMode.slice(1).toLowerCase();
 
-			const temp = match.data.participants.findIndex(participant => participant.summonerName === User.Name);
-			const idchamp = match.data.participants[temp]?.championId;
 			const avatarUrl = `https://ddragon.leagueoflegends.com/cdn/${config.version}/img/profileicon/${player.data.profileIconId}.png`;
 			match.data.participants.forEach(participant => participant.championId = champname[participant.championId]);
 			match.data.gameLength = Math.max(0, match.data.gameLength);
+
+			let participant = [];
+			for (let i = 0; i < 10; i++)
+				participant = match.data.participants[i];
+
+			let champions = [];
+			for (let i = 0; i < 10; i++)
+				champions = champname[match.data.participants[i].championId];
 
 			const embed = new EmbedBuilder()
 				.setColor(0xCA335c)
@@ -36,18 +43,18 @@ module.exports = {
 				.addFields(
 					{ name: "Mode de jeu", value : `${match.data.gameMode}`},
 					{ name: "Durée de la partie", value : `${Math.floor(match.data.gameLength / 60)} minutes`},
-					{ name: `${match.data.participants[0].summonerName} vs ${match.data.participants[5].summonerName}`, value: `${champname[match.data.participants[0].championId]} vs ${champname[match.data.participants[5].championId]}`},
-					{ name: `${match.data.participants[1].summonerName} vs ${match.data.participants[6].summonerName}`, value: `${champname[match.data.participants[1].championId]} vs ${champname[match.data.participants[6].championId]}`},
-					{ name: `${match.data.participants[2].summonerName} vs ${match.data.participants[7].summonerName}`, value: `${champname[match.data.participants[2].championId]} vs ${champname[match.data.participants[7].championId]}`},
-					{ name: `${match.data.participants[3].summonerName} vs ${match.data.participants[8].summonerName}`, value: `${champname[match.data.participants[3].championId]} vs ${champname[match.data.participants[8].championId]}`},
-					{ name: `${match.data.participants[4].summonerName} vs ${match.data.participants[9].summonerName}`, value: `${champname[match.data.participants[4].championId]} vs ${champname[match.data.participants[9].championId]}`},
+					{ name: `${participant[0]} vs ${participant[5]}`, value: `${champions[0]} vs ${champions[5]}`},
+					{ name: `${participant[1]} vs ${participant[6]}`, value: `${champions[1]} vs ${champions[6]}`},
+					{ name: `${participant[2]} vs ${participant[7]}`, value: `${champions[2]} vs ${champions[7]}`},
+					{ name: `${participant[3]} vs ${participant[8]}`, value: `${champions[3]} vs ${champions[8]}`},
+					{ name: `${participant[4]} vs ${participant[9]}`, value: `${champions[4]} vs ${champions[9]}`},
 				)
 				.setThumbnail(avatarUrl)
 				.setTimestamp()
 			await interaction.reply({embeds: [embed]});
 		}catch (error)
 		{
-			await interaction.reply({content : "Erreur, Joueur non trouvé, ou aucune partie en cours", ephemeral : true});
+			await errBot(error, bot, interaction);
 		}
 	}
 }
