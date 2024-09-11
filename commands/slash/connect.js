@@ -29,35 +29,30 @@ module.exports = {
 
 	async run(bot, interaction)
 	{
-		try
-		{
-			const summoner = interaction.options.getString("summoner");
-			const tag = interaction.options.getString("tag");
-			const region = interaction.options.getString("region");
+		const summoner = interaction.options.getString("summoner");
+		const tag = interaction.options.getString("tag");
+		const region = interaction.options.getString("region");
+		const validRegions = ['americas', 'asia', 'europe', 'esports'];
+		if (!validRegions.includes(region)) {
+			return await interaction.reply({ content: "Erreur, Région invalide", ephemeral: true });
+		}
+		try {
 			const PUUID = await axios.get(`https://${region}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${summoner}/${tag}?api_key=${config.token_riot}`);
 			const player = await axios.get(`https://${config.region}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${PUUID.data.puuid}?api_key=${config.token_riot}`);
-
-			try
-			{
-				const newUser = new User({
-					DiscordId: interaction.user.id,
-					Name: summoner,
-					Tag: tag,
-					Region: region,
-					Puuid: PUUID.data.puuid,
-					Id: player.data.accountId,
+			const newUser = new User({
+				DiscordId: interaction.user.id,
+				Name: summoner,
+				Tag: tag,
+				Region: region,
+				Puuid: PUUID.data.puuid,
+				Id: player.data.accountId,
 			});
 			await newUser.save();
 			await interaction.reply({ content: "Vous êtes désormais connecté", ephemeral: true });
-			}
-			catch (error)
-			{
-				await interaction.reply({ content: "Vous êtes déjà connecté", ephemeral: true });
-			}
 		}
 		catch (error)
 		{
-			await interaction.reply({ content: "Erreur, Joueur non trouvé", ephemeral: true });
+			interaction.reply({ content: "Erreur, Vérifiez vos informations", ephemeral: true });
 		}
 	}
 }

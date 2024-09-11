@@ -1,4 +1,5 @@
 module.exports = {
+	893: "Aurora",
 	901: "Smolder",
 	266: "Aatrox",
 	103: "Ahri",

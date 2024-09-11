@@ -1,7 +1,6 @@
 const fs = require('fs');
 
 module.exports = async bot => {
-
 	fs.readdirSync("./commands/slash").filter(f => f.endsWith(".js")).forEach(async file => {
 
 		let command = require(`../commands/slash/${file}`);

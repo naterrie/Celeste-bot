@@ -4,8 +4,8 @@ WORKDIR /app
 
 COPY package*.json .
 
-RUN npm update && npm install && npm install -g nodemon
+RUN npm update && npm install && npm install -g nodemon && npm install canvas
 
 COPY . .
 
-CMD nodemon main.js
+CMD nodemon main

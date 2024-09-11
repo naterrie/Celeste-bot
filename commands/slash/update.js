@@ -13,21 +13,16 @@ module.exports = {
 
 	async run(bot, interaction)
 	{
-		try
-		{
-			const User = await DB.findOne({DiscordId: interaction.user.id});
-			if (!User)
-				await interaction.reply({content : "Vous n'êtes pas connecté", ephemeral : true});
+		const User = await DB.findOne({DiscordId: interaction.user.id});
+		if (!User)
+			await interaction.reply({content : "Vous n'êtes pas connecté", ephemeral : true});
 
-			const update = await axios.get(`https://${User.Region}.api.riotgames.com/riot/account/v1/accounts/by-puuid/${User.Puuid}?api_key=${config.token_riot}`)
-			User.Name = update.data.gameName;
-			User.Tag = update.data.tagLine;
-			await User.save();
-			await interaction.reply({content : "Profil mis à jour", ephemeral : true});
-
-		}catch (error)
-		{
-			await errBot(error, bot, interaction);
-		}
+		const update = await axios.get(`https://${User.Region}.api.riotgames.com/riot/account/v1/accounts/by-puuid/${User.Puuid}?api_key=${config.token_riot}`)
+		if (update.status != 200)
+			return errBot(update.status, bot, interaction);
+		User.Name = update.data.gameName;
+		User.Tag = update.data.tagLine;
+		await User.save();
+		await interaction.reply({content : "Profil mis à jour", ephemeral : true});
 	}
 }

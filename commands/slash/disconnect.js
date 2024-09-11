@@ -9,20 +9,13 @@ module.exports = {
 
 	async run(bot, interaction)
 	{
-		try
+		const user = await User.findOne({ DiscordId: interaction.user.id });
+		if (user)
 		{
-			const user = await User.findOne({ DiscordId: interaction.user.id });
-			if (user)
-			{
-				await User.deleteOne({ DiscordId: interaction.user.id });
-				await interaction.reply({ content: "Vous êtes désormais déconnecté", ephemeral: true });
-			}
-			else
-				await interaction.reply({ content: "Vous n'êtes pas connecté", ephemeral: true });
+			await User.deleteOne({ DiscordId: interaction.user.id });
+			await interaction.reply({ content: "Vous êtes désormais déconnecté", ephemeral: true });
 		}
-		catch (error)
-		{
-			await interaction.reply({ content: "Erreur", ephemeral: true });
-		}
+		else
+			await interaction.reply({ content: "Vous n'êtes pas connecté", ephemeral: true });
 	}
 }
